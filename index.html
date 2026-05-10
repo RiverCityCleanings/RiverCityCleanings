@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>River City Cleaners — Wisconsin Rapids, WI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--black:#0d0d0d;
+--white:#fafaf8;
+--gray-100:#f4f4f1;
+--gray-200:#e8e8e3;
+--gray-300:#d0d0c8;
+--gray-500:#8a8a82;
+--gray-700:#4a4a44;
+--border:1px solid #d0d0c8;
+--radius:6px;
+--ff-head:'Syne',sans-serif;
+--ff-body:'Figtree',sans-serif;
+--transition:0.22s ease;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--white);color:var(--black);font-family:var(--ff-body);font-weight:400;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+nav{
+position:fixed;top:0;left:0;width:100%;z-index:100;
+background:rgba(250,250,248,0.94);
+backdrop-filter:blur(10px);
+border-bottom:var(--border);
+padding:0 5vw;
+display:flex;align-items:center;justify-content:space-between;
+height:62px;
+transition:box-shadow var(--transition);
+}
+nav.scrolled{box-shadow:0 2px 18px rgba(0,0,0,0.06)}
+.nav-logo{
+font-family:var(--ff-head);font-weight:800;font-size:1.05rem;
+letter-spacing:-0.02em;display:flex;align-items:center;gap:10px;
+}
+.nav-logo img{height:34px;width:auto;object-fit:contain}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.1}
+.nav-logo-text span:first-child{font-size:.95rem;letter-spacing:0.01em}
+.nav-logo-text span:last-child{font-size:.65rem;font-weight:400;color:var(--gray-500);letter-spacing:0.08em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:.85rem;color:var(--gray-700);letter-spacing:0.02em;transition:color var(--transition)}
+.nav-links a:hover{color:var(--black)}
+.nav-cta{
+font-size:.82rem;font-weight:600;letter-spacing:0.04em;
+padding:8px 18px;border:var(--border);border-radius:var(--radius);
+background:var(--black);color:var(--white);
+transition:all var(--transition);
+}
+.nav-cta:hover{background:var(--white);color:var(--black)}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--black);transition:all var(--transition)}
+.mobile-menu{
+display:none;position:fixed;top:62px;left:0;width:100%;
+background:var(--white);border-bottom:var(--border);
+padding:1.5rem 5vw 2rem;flex-direction:column;gap:1.2rem;z-index:99;
+}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1rem;color:var(--gray-700);padding:.3rem 0;border-bottom:var(--border)}
+.mobile-menu a:last-child{border-bottom:none}
+
+.hero{
+min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+padding:120px 5vw 80px;
+border-bottom:var(--border);
+position:relative;overflow:hidden;
+}
+.hero-tag{
+display:inline-flex;align-items:center;gap:8px;
+font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--gray-500);border:var(--border);border-radius:50px;
+padding:5px 14px;margin-bottom:2.5rem;
+}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--black);display:block}
+.hero-headline{
+font-family:var(--ff-head);font-weight:800;
+font-size:clamp(2.8rem,7vw,6.2rem);
+line-height:1.0;letter-spacing:-0.03em;
+max-width:800px;margin-bottom:1.8rem;
+}
+.hero-headline em{font-style:italic;font-weight:600;letter-spacing:-0.01em}
+.hero-sub{
+font-size:clamp(1rem,2vw,1.15rem);color:var(--gray-700);
+max-width:420px;line-height:1.65;margin-bottom:2.8rem;font-weight:300;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{
+font-family:var(--ff-head);font-weight:700;font-size:.9rem;
+letter-spacing:0.04em;padding:14px 28px;
+background:var(--black);color:var(--white);
+border-radius:var(--radius);border:2px solid var(--black);
+transition:all .2s ease;display:inline-block;
+}
+.btn-primary:hover{background:transparent;color:var(--black)}
+.btn-outline{
+font-family:var(--ff-head);font-weight:600;font-size:.9rem;
+letter-spacing:0.04em;padding:13px 26px;
+background:transparent;color:var(--black);
+border-radius:var(--radius);border:1.5px solid var(--gray-300);
+transition:all .2s ease;display:inline-block;
+}
+.btn-outline:hover{border-color:var(--black)}
+.hero-note{
+font-size:.76rem;color:var(--gray-500);margin-top:1.2rem;
+display:flex;align-items:center;gap:6px;
+}
+.hero-note::before{content:'↓';font-size:1rem}
+.hero-deco{
+position:absolute;right:-80px;top:50%;transform:translateY(-50%);
+width:420px;height:420px;border-radius:50%;
+border:1px solid var(--gray-200);opacity:.6;pointer-events:none;
+}
+.hero-deco::after{
+content:'';position:absolute;inset:40px;border-radius:50%;
+border:1px solid var(--gray-200);
+}
+.hero-stats{
+display:flex;gap:2.5rem;margin-top:4rem;padding-top:2rem;border-top:var(--border);
+flex-wrap:wrap;
+}
+.stat-item{}
+.stat-num{font-family:var(--ff-head);font-size:1.8rem;font-weight:800;letter-spacing:-0.03em}
+.stat-label{font-size:.72rem;color:var(--gray-500);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+
+section{padding:80px 5vw}
+.section-label{
+font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+color:var(--gray-500);margin-bottom:1rem;display:flex;align-items:center;gap:8px;
+}
+.section-label::before{content:'';display:block;width:24px;height:1px;background:var(--gray-300)}
+.section-title{
+font-family:var(--ff-head);font-weight:800;
+font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-0.03em;
+line-height:1.1;margin-bottom:1rem;
+}
+.section-sub{
+font-size:1rem;color:var(--gray-700);max-width:480px;line-height:1.65;font-weight:300;
+}
+
+.about{background:var(--gray-100);border-top:var(--border);border-bottom:var(--border)}
+.about-grid{
+display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:start;margin-top:3.5rem;
+}
+.about-left{}
+.about-right{}
+.about-intro{
+font-size:1.05rem;line-height:1.75;color:var(--gray-700);margin-bottom:1.5rem;font-weight:300;
+}
+.about-intro strong{color:var(--black);font-weight:600}
+.about-owners{display:flex;flex-direction:column;gap:1px;margin-top:2.5rem}
+.owner-card{
+padding:1.4rem;border:var(--border);background:var(--white);
+border-radius:var(--radius);margin-bottom:12px;
+transition:transform var(--transition);
+}
+.owner-card:hover{transform:translateY(-2px)}
+.owner-name{font-family:var(--ff-head);font-weight:700;font-size:1.1rem;margin-bottom:4px}
+.owner-role{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500)}
+.owner-phone{font-size:.85rem;color:var(--gray-700);margin-top:.5rem}
+.owner-phone a:hover{text-decoration:underline}
+.about-values{margin-top:2rem}
+.about-value{
+display:flex;gap:14px;align-items:flex-start;
+padding:.9rem 0;border-bottom:var(--border);
+}
+.about-value:last-child{border-bottom:none}
+.about-value-icon{
+width:28px;height:28px;flex-shrink:0;
+display:flex;align-items:center;justify-content:center;
+}
+.about-value-text h4{font-size:.88rem;font-weight:600;margin-bottom:2px}
+.about-value-text p{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+
+.services{border-bottom:var(--border)}
+.services-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:1px;border:var(--border);border-radius:var(--radius);overflow:hidden;
+}
+.service-card{
+padding:1.8rem 1.6rem;background:var(--white);
+transition:background var(--transition);cursor:default;position:relative;
+}
+.service-card:hover{background:var(--gray-100)}
+.service-card:hover .service-icon-wrap{transform:scale(1.1) rotate(-4deg)}
+.service-icon-wrap{
+width:40px;height:40px;margin-bottom:1.1rem;
+transition:transform .25s ease;
+}
+.service-icon-wrap svg{width:100%;height:100%}
+.service-name{font-family:var(--ff-head);font-size:.98rem;font-weight:700;margin-bottom:.35rem;letter-spacing:-0.01em}
+.service-desc{font-size:.78rem;color:var(--gray-500);line-height:1.5}
+.service-note{
+font-size:.68rem;color:var(--gray-500);margin-top:2.5rem;
+padding-top:1rem;border-top:var(--border);line-height:1.6;
+}
+.service-note strong{color:var(--black)}
+
+.pricing{background:var(--gray-100);border-bottom:var(--border)}
+.pricing-grid{
+display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+gap:16px;margin-top:2.5rem;
+}
+.price-card{
+background:var(--white);border:var(--border);border-radius:var(--radius);
+padding:1.8rem;transition:all var(--transition);position:relative;overflow:hidden;
+}
+.price-card:hover{border-color:var(--black);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.price-card.featured{background:var(--black);color:var(--white);border-color:var(--black)}
+.price-card.featured .price-label,.price-card.featured .price-notes{color:rgba(255,255,255,.55)}
+.price-card.featured .price-from{color:rgba(255,255,255,.7)}
+.price-tag{
+position:absolute;top:14px;right:14px;
+font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+padding:3px 8px;background:var(--black);color:var(--white);border-radius:50px;
+}
+.price-card.featured .price-tag{background:var(--white);color:var(--black)}
+.price-icon{margin-bottom:1rem;opacity:.7}
+.price-name{font-family:var(--ff-head);font-weight:800;font-size:1.05rem;letter-spacing:-0.02em;margin-bottom:.3rem}
+.price-label{font-size:.72rem;color:var(--gray-500);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.2rem}
+.price-from{font-size:.72rem;color:var(--gray-500);margin-bottom:.2rem}
+.price-amount{font-family:var(--ff-head);font-size:2rem;font-weight:800;letter-spacing:-0.04em}
+.price-notes{font-size:.75rem;color:var(--gray-500);margin-top:.8rem;line-height:1.5}
+.price-footer{
+margin-top:2.5rem;padding-top:1rem;border-top:var(--border);
+font-size:.76rem;color:var(--gray-500);line-height:1.5;
+}
+.price-footer strong{color:var(--black)}
+.price-custom{
+border:1.5px dashed var(--gray-300);border-radius:var(--radius);
+padding:1.8rem;display:flex;flex-direction:column;align-items:flex-start;gap:.8rem;
+transition:border-color var(--transition);
+}
+.price-custom:hover{border-color:var(--black)}
+.price-custom h3{font-family:var(--ff-head);font-weight:700;font-size:1.05rem}
+.price-custom p{font-size:.82rem;color:var(--gray-500);line-height:1.5}
+
+.hiw{border-bottom:var(--border)}
+.hiw-steps{
+display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:0;margin-top:3rem;border:var(--border);border-radius:var(--radius);overflow:hidden;
+}
+.hiw-step{
+padding:2.2rem 1.8rem;border-right:var(--border);position:relative;
+transition:background var(--transition);
+}
+.hiw-step:last-child{border-right:none}
+.hiw-step:hover{background:var(--gray-100)}
+.step-num{
+font-family:var(--ff-head);font-size:2.8rem;font-weight:800;
+color:var(--gray-200);letter-spacing:-0.05em;line-height:1;margin-bottom:1.2rem;
+}
+.step-title{font-family:var(--ff-head);font-weight:700;font-size:.98rem;margin-bottom:.4rem}
+.step-desc{font-size:.8rem;color:var(--gray-500);line-height:1.6}
+
+.why{background:var(--gray-100);border-bottom:var(--border)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4vw;margin-top:2rem;align-items:center}
+.why-left{}
+.why-list{margin-top:2rem;display:flex;flex-direction:column;gap:0}
+.why-item{
+display:flex;align-items:flex-start;gap:16px;
+padding:1.2rem 0;border-bottom:var(--border);
+}
+.why-item:last-child{border-bottom:none}
+.why-check{
+width:22px;height:22px;border:var(--border);border-radius:50%;
+display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+.why-check svg{width:10px;height:10px}
+.why-item-text h4{font-size:.92rem;font-weight:600;margin-bottom:2px}
+.why-item-text p{font-size:.8rem;color:var(--gray-500);line-height:1.5}
+.why-right{
+border:var(--border);border-radius:var(--radius);
+padding:2.5rem;background:var(--white);
+}
+.why-right h3{font-family:var(--ff-head);font-weight:700;font-size:1.3rem;margin-bottom:.8rem;letter-spacing:-0.02em}
+.why-right p{font-size:.88rem;color:var(--gray-700);line-height:1.7;font-weight:300}
+.why-right p+p{margin-top:.9rem}
+.why-sig{
+margin-top:2rem;padding-top:1.4rem;border-top:var(--border);
+display:flex;gap:12px;align-items:center;
+}
+.why-sig-avatar{
+width:40px;height:40px;border-radius:50%;background:var(--gray-200);
+display:flex;align-items:center;justify-content:center;
+font-family:var(--ff-head);font-weight:700;font-size:.9rem;
+}
+.why-sig-info{}
+.why-sig-name{font-size:.88rem;font-weight:600}
+.why-sig-role{font-size:.72rem;color:var(--gray-500)}
+
+.faq{border-bottom:var(--border)}
+.faq-header{margin-bottom:2.5rem}
+.faq-list{max-width:720px}
+.faq-item{border-bottom:var(--border);overflow:hidden}
+.faq-q{
+display:flex;justify-content:space-between;align-items:center;
+padding:1.3rem 0;cursor:pointer;gap:1rem;
+font-size:.95rem;font-weight:500;line-height:1.4;
+transition:color var(--transition);
+}
+.faq-q:hover{color:var(--gray-700)}
+.faq-arrow{
+width:24px;height:24px;flex-shrink:0;border:var(--border);
+border-radius:50%;display:flex;align-items:center;justify-content:center;
+transition:all .2s ease;
+}
+.faq-arrow svg{width:10px;height:10px;transition:transform .2s ease}
+.faq-item.open .faq-arrow svg{transform:rotate(45deg)}
+.faq-a{
+max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;
+font-size:.88rem;color:var(--gray-700);line-height:1.7;font-weight:300;
+}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:1.3rem}
+
+.contact{background:var(--gray-100);border-bottom:var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5vw;margin-top:2.5rem;align-items:start}
+.contact-info h3{font-family:var(--ff-head);font-weight:700;font-size:1.2rem;margin-bottom:1rem;letter-spacing:-0.02em}
+.contact-info p{font-size:.88rem;color:var(--gray-700);line-height:1.65;margin-bottom:1.5rem;font-weight:300}
+.contact-detail{
+display:flex;align-items:flex-start;gap:12px;
+padding:.9rem 0;border-bottom:var(--border);
+}
+.contact-detail:last-child{border-bottom:none}
+.contact-detail-icon{
+width:32px;height:32px;border:var(--border);border-radius:var(--radius);
+display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--white);
+}
+.contact-detail-icon svg{width:14px;height:14px}
+.contact-detail-text{}
+.contact-detail-text small{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500)}
+.contact-detail-text p{font-size:.9rem;font-weight:500;margin-top:2px}
+.contact-form{background:var(--white);border:var(--border);border-radius:var(--radius);padding:2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.form-group label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500)}
+.form-group input,.form-group textarea,.form-group select{
+font-family:var(--ff-body);font-size:.88rem;
+padding:10px 14px;border:var(--border);border-radius:var(--radius);
+background:var(--gray-100);color:var(--black);outline:none;
+transition:border-color .15s ease,background .15s ease;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{
+border-color:var(--black);background:var(--white);
+}
+.form-group textarea{resize:vertical;min-height:100px;line-height:1.5}
+.form-submit{
+width:100%;padding:13px;background:var(--black);color:var(--white);
+font-family:var(--ff-head);font-weight:700;font-size:.88rem;letter-spacing:.06em;
+border-radius:var(--radius);border:2px solid var(--black);
+transition:all .2s ease;
+}
+.form-submit:hover{background:transparent;color:var(--black)}
+.form-note{font-size:.72rem;color:var(--gray-500);text-align:center;margin-top:.7rem}
+
+.disclaimer{border-bottom:var(--border);padding:40px 5vw}
+.disclaimer-inner{
+max-width:700px;border:1.5px dashed var(--gray-300);border-radius:var(--radius);
+padding:1.8rem;
+}
+.disclaimer-title{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.8rem}
+.disclaimer-inner p{font-size:.82rem;color:var(--gray-700);line-height:1.7;font-weight:300}
+.disclaimer-inner p+p{margin-top:.6rem}
+
+footer{
+padding:2rem 5vw;border-top:var(--border);
+display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
+background:var(--white);
+}
+.footer-brand{font-family:var(--ff-head);font-size:.85rem;font-weight:700;letter-spacing:-0.01em}
+.footer-brand span{color:var(--gray-500);font-weight:400}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:.75rem;color:var(--gray-500);transition:color var(--transition)}
+.footer-links a:hover{color:var(--black)}
+.footer-copy{font-size:.72rem;color:var(--gray-500)}
+
+.toast{
+position:fixed;bottom:24px;right:24px;
+background:var(--black);color:var(--white);
+font-size:.82rem;padding:12px 20px;border-radius:var(--radius);
+transform:translateY(80px);opacity:0;transition:all .3s ease;z-index:999;
+}
+.toast.show{transform:translateY(0);opacity:1}
+
+@media(max-width:900px){
+.nav-links,.nav-cta{display:none}
+.hamburger{display:flex}
+.about-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:1fr}
+.why-right{margin-top:1rem}
+.contact-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.hiw-steps{grid-template-columns:1fr 1fr}
+.hiw-step{border-right:none;border-bottom:var(--border)}
+.hiw-step:nth-child(odd){border-right:var(--border)}
+.hiw-step:last-child{border-bottom:none}
+.hero-deco{display:none}
+}
+@media(max-width:600px){
+.hero-headline{font-size:2.5rem}
+.section-title{font-size:1.7rem}
+.hiw-steps{grid-template-columns:1fr}
+.hiw-step:nth-child(odd){border-right:none}
+.hiw-step{border-bottom:var(--border)}
+.services-header{flex-direction:column;align-items:flex-start}
+footer{flex-direction:column;align-items:flex-start}
+.footer-links{flex-wrap:wrap;gap:1rem}
+section{padding:60px 5vw}
+.hero-stats{gap:1.5rem}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;animation:fadeUp .5s ease forwards}
+.fade-up.d1{animation-delay:.1s}
+.fade-up.d2{animation-delay:.2s}
+.fade-up.d3{animation-delay:.3s}
+.fade-up.d4{animation-delay:.4s}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+<a href="#" class="nav-logo">
+<img src="https://i.ibb.co/6JXR3PJd" alt="River City Cleaners Logo" onerror="this.style.display='none'">
+<div class="nav-logo-text">
+<span>River City Cleaners</span>
+<span>Wisconsin Rapids, WI</span>
+</div>
+</a>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+</div>
+<a href="tel:7154986796" class="nav-cta">Call or Text</a>
+<button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+<span></span><span></span><span></span>
+</button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+<a href="#about" onclick="closeMobile()">About</a>
+<a href="#services" onclick="closeMobile()">Services</a>
+<a href="#pricing" onclick="closeMobile()">Pricing</a>
+<a href="#faq" onclick="closeMobile()">FAQ</a>
+<a href="#contact" onclick="closeMobile()">Contact</a>
+<a href="tel:7154986796" style="font-weight:600;color:var(--black)">☎ (715) 498-6796</a>
+</div>
+
+<section class="hero" id="home">
+<div class="hero-deco"></div>
+<div class="hero-tag">Wisconsin Rapids Local ✦ Est. 2024</div>
+<h1 class="hero-headline fade-up d1">Clean space,<br><em>honest price.</em></h1>
+<p class="hero-sub fade-up d2">We're two young guys from Wisconsin Rapids who show up, work hard, and leave your space cleaner than we found it. Simple as that.</p>
+<div class="hero-actions fade-up d3">
+<a href="#contact" class="btn-primary">Get a Free Quote</a>
+<a href="#services" class="btn-outline">See What We Do</a>
+</div>
+<p class="hero-note fade-up d4">Scroll to learn more</p>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-num">100%</div>
+<div class="stat-label">Local</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">2</div>
+<div class="stat-label">Owners</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">10+</div>
+<div class="stat-label">Services</div>
+</div>
+<div class="stat-item">
+<div class="stat-num">WI</div>
+<div class="stat-label">Rapids Based</div>
+</div>
+</div>
+</section>
+
+<section class="about" id="about">
+<div class="section-label">About Us</div>
+<h2 class="section-title">Real people,<br>local business.</h2>
+<div class="about-grid">
+<div class="about-left">
+<p class="about-intro">
+River City Cleaners was started by <strong>Michael LaCour</strong> and <strong>Marshall Mike</strong> — two guys from Wisconsin Rapids who wanted to do something real in their community. We're honest about the fact that we're still growing, still learning, and we don't pretend otherwise.
+</p>
+<p class="about-intro">
+We haul our equipment by bike and wagon. We bring our own extension cords. We work for fair prices and we take the job seriously every single time — whether it's a car interior or a full house.
+</p>
+<p class="about-intro">
+We're not a franchise. We're not a big company. We're just two people trying to do good work and build something we're proud of in our hometown.
+</p>
+<div class="about-values">
+<div class="about-value">
+<div class="about-value-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+</svg>
+</div>
+<div class="about-value-text">
+<h4>Still Learning, Always Improving</h4>
+<p>We're young and this is new for us — but we put in effort every single job and we mean it.</p>
+</div>
+</div>
+<div class="about-value">
+<div class="about-value-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+</svg>
+</div>
+<div class="about-value-text">
+<h4>We Show Up</h4>
+<p>If we schedule something with you, we'll be there. Reliability matters to us.</p>
+</div>
+</div>
+<div class="about-value">
+<div class="about-value-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+</svg>
+</div>
+<div class="about-value-text">
+<h4>Wisconsin Rapids Through and Through</h4>
+<p>We live here, we work here, and we care about this community. Supporting local matters.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="about-right">
+<div class="about-owners">
+<div class="owner-card">
+<div class="owner-name">Michael LaCour</div>
+<div class="owner-role">Owner &amp; Co-Founder</div>
+<div class="owner-phone"><a href="tel:7154986796">(715) 498-6796</a> — text preferred</div>
+</div>
+<div class="owner-card">
+<div class="owner-name">Marshall Mike</div>
+<div class="owner-role">Co-Owner &amp; Co-Founder</div>
+</div>
+</div>
+<div style="margin-top:2rem;padding:1.4rem;border:var(--border);border-radius:var(--radius);background:var(--white)">
+<div style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-500);margin-bottom:.6rem">Quick note</div>
+<p style="font-size:.84rem;color:var(--gray-700);line-height:1.65;font-weight:300">We transport all our equipment by bike and wagon — so travel distance does affect our pricing. We'll always be upfront about that before we confirm anything. No surprises.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="services" id="services">
+<div class="services-header">
+<div>
+<div class="section-label">What We Do</div>
+<h2 class="section-title">Our services.</h2>
+</div>
+<p class="section-sub" style="max-width:320px">We keep it simple — basic cleaning, done right. No pressure washing, no professional detailing, no deep restoration work.</p>
+</div>
+<div class="services-grid">
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<rect x="4" y="10" width="32" height="22" rx="3"/>
+<path d="M4 16h32M12 10V8a4 4 0 0 1 16 0v2"/>
+</svg>
+</div>
+<div class="service-name">House Cleaning</div>
+<div class="service-desc">Full interior cleaning — floors, surfaces, rooms, hallways. We work room by room.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<rect x="3" y="18" width="34" height="18" rx="2"/>
+<path d="M8 18V12l24 0v6M16 12V8h8v4"/>
+</svg>
+</div>
+<div class="service-name">Garage Cleaning</div>
+<div class="service-desc">Sweeping, organizing clutter, and getting your garage back to usable shape.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<path d="M5 28 L20 10 L35 28"/>
+<rect x="5" y="28" width="30" height="8" rx="1"/>
+<rect x="15" y="28" width="10" height="8"/>
+</svg>
+</div>
+<div class="service-name">Shed Cleaning</div>
+<div class="service-desc">Clean out debris, dust, and junk from sheds and small outbuildings.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<rect x="6" y="14" width="28" height="18" rx="3"/>
+<path d="M14 14V10a6 6 0 0 1 12 0v4M10 22h20M10 27h14"/>
+</svg>
+</div>
+<div class="service-name">Car Interior</div>
+<div class="service-desc">Vacuuming seats and floors, wiping surfaces, basic interior cleanup — not detailing.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<rect x="4" y="22" width="32" height="14" rx="2"/>
+<path d="M4 22h32M12 22v-8a8 8 0 0 1 16 0v8"/>
+</svg>
+</div>
+<div class="service-name">Basement Cleaning</div>
+<div class="service-desc">Sweeping, vacuuming, trash removal, and general tidying of basements.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<path d="M5 30 L20 8 L35 30"/>
+<path d="M14 30V22h12v8"/>
+<path d="M8 20 L20 10 L32 20"/>
+</svg>
+</div>
+<div class="service-name">Attic Cleaning</div>
+<div class="service-desc">Clearing dust, old items, and debris from attic spaces. Light work, careful approach.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<path d="M8 32c0-8 4-14 12-14s12 6 12 14"/>
+<path d="M20 18V10M16 22l-4-4M24 22l4-4"/>
+<rect x="4" y="32" width="32" height="4" rx="1"/>
+</svg>
+</div>
+<div class="service-name">Sweeping &amp; Mopping</div>
+<div class="service-desc">Standard floor care — sweep, mop, and leave hard floors looking clean.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<rect x="10" y="8" width="20" height="14" rx="2"/>
+<path d="M20 22v10M13 32h14M6 12h4M30 12h4"/>
+</svg>
+</div>
+<div class="service-name">Vacuuming</div>
+<div class="service-desc">Carpet vacuuming, rugs, and upholstery. We bring our own portable vacuum.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<rect x="6" y="26" width="28" height="8" rx="2"/>
+<path d="M10 26c0-8 20-8 20 0M20 10v8M16 14l4-4 4 4"/>
+</svg>
+</div>
+<div class="service-name">Carpet Care</div>
+<div class="service-desc">Vacuuming, spot checks, and basic carpet maintenance. Not steam cleaning.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<path d="M8 32h24M14 32l-6-14h24l-6 14"/>
+<circle cx="20" cy="12" r="4"/>
+</svg>
+</div>
+<div class="service-name">Trash Cleanup</div>
+<div class="service-desc">Collecting and bagging trash and clutter. Simple junk gathering and removal.</div>
+</div>
+<div class="service-card">
+<div class="service-icon-wrap">
+<svg viewBox="0 0 40 40" fill="none" stroke="#0d0d0d" stroke-width="1.5">
+<path d="M8 32c4-10 10-14 12-16M28 32c-4-10-10-14-12-16"/>
+<path d="M10 28c6-4 12-4 18 0"/>
+<circle cx="20" cy="12" r="4"/>
+</svg>
+</div>
+<div class="service-name">Light Yard Work</div>
+<div class="service-desc">Raking, basic tidying, and yard cleanup. Lawn mowing possibly available — ask us.</div>
+</div>
+<div class="service-card" style="background:var(--gray-100)">
+<div style="font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gray-500);margin-bottom:1rem">Service Note</div>
+<p class="service-note"><strong>We need a power outlet.</strong> We bring our own extension cords, but we do need access to an electrical outlet at your location for our portable vacuum and any powered equipment.</p>
+</div>
+</div>
+</section>
+
+<section class="pricing" id="pricing">
+<div class="section-label">Pricing</div>
+<h2 class="section-title">Simple, fair prices.</h2>
+<p class="section-sub">These are starting estimates — final cost depends on how far we travel, how long the job takes, and the condition of the space. We'll always give you a real quote before we start.</p>
+<div class="pricing-grid">
+<div class="price-card">
+<div class="price-name">Car Interior Clean</div>
+<div class="price-label">Vacuum + wipe down</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$15</div>
+<div class="price-notes">Vacuuming seats, floors, and basic surface wipe. Not a full detail — just a solid clean.</div>
+</div>
+<div class="price-card">
+<div class="price-name">Single Room</div>
+<div class="price-label">Sweep, vacuum, tidy</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$20</div>
+<div class="price-notes">Bedrooms, offices, living rooms. Floor care and general tidying included.</div>
+</div>
+<div class="price-card">
+<div class="price-name">Garage Clean</div>
+<div class="price-label">Sweep, clear, organize</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$30</div>
+<div class="price-notes">Sweeping the whole floor, clearing obvious debris, and basic organization.</div>
+</div>
+<div class="price-card">
+<div class="price-name">Shed Clean</div>
+<div class="price-label">Clear + sweep</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$25</div>
+<div class="price-notes">Smaller space, quicker job. Price depends on how packed it is.</div>
+</div>
+<div class="price-card">
+<div class="price-name">Basement Clean</div>
+<div class="price-label">Full basement tidy</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$40</div>
+<div class="price-notes">More space, more time. Sweeping, vacuuming, and clutter gathering. Price goes up with mess level.</div>
+</div>
+<div class="price-card">
+<div class="price-name">Attic Clean</div>
+<div class="price-label">Careful, dusty work</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$45</div>
+<div class="price-notes">Attics take more effort and care. Dust, boxes, and tight spaces — we handle it.</div>
+</div>
+<div class="price-card featured">
+<span class="price-tag">Most Complete</span>
+<div class="price-name">Whole House Clean</div>
+<div class="price-label">Full home service</div>
+<div class="price-from">Starting at</div>
+<div class="price-amount">$80</div>
+<div class="price-notes">All rooms, hallways, floors, and common areas. Large homes will cost more — we'll quote you first.</div>
+</div>
+<div class="price-card">
+<div class="price-name">Lawn Mowing</div>
+<div class="price-label">Possibly available</div>
+<div class="price-from">Ask for estimate</div>
+<div class="price-amount">TBD</div>
+<div class="price-notes">We're working on offering this. Reach out and we'll let you know what we can do for your yard size.</div>
+</div>
+<div class="price-custom">
+<h3>Custom Quote</h3>
+<p>Got something that doesn't fit neatly into a category? Just tell us what you need and we'll figure out a fair price together. No pressure, no commitment to talk.</p>
+<a href="#contact" class="btn-outline" style="font-size:.8rem;padding:9px 18px;margin-top:.5rem">Request a Quote</a>
+</div>
+</div>
+<div class="price-footer" style="margin-top:2rem">
+<strong>Heads up:</strong> Prices shown are starting estimates. Travel distance, job size, and condition of the space all affect final cost. We'll always confirm pricing before any work begins.
+</div>
+</section>
+
+<section class="hiw" id="how-it-works">
+<div class="section-label">How It Works</div>
+<h2 class="section-title">Four simple steps.</h2>
+<div class="hiw-steps">
+<div class="hiw-step">
+<div class="step-num">01</div>
+<div class="step-title">Reach out to us</div>
+<div class="step-desc">Text or call Michael at (715) 498-6796. Texting is easier for us and faster for you. Tell us what you need done and where you're located.</div>
+</div>
+<div class="hiw-step">
+<div class="step-num">02</div>
+<div class="step-title">We give you a quote</div>
+<div class="step-desc">Based on the job, travel distance, and difficulty, we'll give you an honest price estimate. No hidden fees, no surprises.</div>
+</div>
+<div class="hiw-step">
+<div class="step-num">03</div>
+<div class="step-title">Pick a time</div>
+<div class="step-desc">We'll work around your schedule as best we can. You tell us when works, and we'll confirm the day and time.</div>
+</div>
+<div class="hiw-step">
+<div class="step-num">04</div>
+<div class="step-title">We show up &amp; get it done</div>
+<div class="step-desc">We arrive with all our own gear — vacuums, extension cords, supplies. Just make sure we can access an outlet and we'll handle the rest.</div>
+</div>
+</div>
+</section>
+
+<section class="why" id="why-us">
+<div class="why-grid">
+<div class="why-left">
+<div class="section-label">Why Choose Us</div>
+<h2 class="section-title">We're not trying to be a big company.</h2>
+<div class="why-list">
+<div class="why-item">
+<div class="why-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.5 5l2.5 2.5 5-5"/></svg></div>
+<div class="why-item-text"><h4>100% Local</h4><p>Based right here in Wisconsin Rapids. We're not a franchise or a service marketplace — it's just us.</p></div>
+</div>
+<div class="why-item">
+<div class="why-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.5 5l2.5 2.5 5-5"/></svg></div>
+<div class="why-item-text"><h4>Affordable Prices</h4><p>We keep costs low because we're small and have low overhead. Savings get passed to you.</p></div>
+</div>
+<div class="why-item">
+<div class="why-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.5 5l2.5 2.5 5-5"/></svg></div>
+<div class="why-item-text"><h4>We're Honest</h4><p>If something is out of our skill range, we'll tell you. We won't pretend we can do something we can't.</p></div>
+</div>
+<div class="why-item">
+<div class="why-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.5 5l2.5 2.5 5-5"/></svg></div>
+<div class="why-item-text"><h4>We Actually Work Hard</h4><p>This is our business and we care about it. Every job we do is a job we want to be proud of.</p></div>
+</div>
+<div class="why-item">
+<div class="why-check"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1.5 5l2.5 2.5 5-5"/></svg></div>
+<div class="why-item-text"><h4>We Bring Everything</h4><p>You don't need supplies. We bring our own vacuums, extension cords, and cleaning materials.</p></div>
+</div>
+</div>
+</div>
+<div class="why-right">
+<h3>A note from Michael</h3>
+<p>"Marshall and I started River City Cleaners because we wanted to actually do something — not just talk about it. We bike our gear to jobs, we bring our own extension cords, and we work until the place looks right."</p>
+<p>"We're still learning how to run a business properly. But we care, we're honest, and we work hard. That's not something every company can say."</p>
+<p>"If something isn't right when we're done, tell us. We'll do our best to make it right. We just want people to be genuinely happy with what we did."</p>
+<div class="why-sig">
+<div class="why-sig-avatar">ML</div>
+<div class="why-sig-info">
+<div class="why-sig-name">Michael LaCour</div>
+<div class="why-sig-role">Owner, River City Cleaners</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="faq" id="faq">
+<div class="faq-header">
+<div class="section-label">FAQ</div>
+<h2 class="section-title">Common questions.</h2>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+Do you bring your own supplies?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 2l3 3-3 3M5 5h4"/><path d="M5 2v6"/></svg></span>
+</div>
+<div class="faq-a">Yes — we bring everything we need. Portable vacuum, extension cords, cleaning supplies. The only thing we need from you is access to an electrical outlet so we can power our equipment.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+Do I need to provide electricity?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">We don't ask you to provide any supplies, but we do need access to a working electrical outlet at your location. We bring our own extension cords so we can usually reach wherever we need to work — just let us know if you have any concerns about that.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+Do you pressure wash?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">No — we don't offer pressure washing. We do standard cleaning like sweeping, mopping, vacuuming, and surface wiping. We also don't do professional detailing or deep restoration cleaning. If you're not sure whether we can handle what you need, just text us and ask.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+Why are prices different for different jobs?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">A few things affect the price: how far away you are (we travel by bike with our gear on a wagon), how big the space is, and how much work it actually takes when we get there. We always give you an estimate before we start — so there are no surprises. If it ends up being easier or harder than expected, we'll talk with you about it first.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+Do you mow lawns?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">Possibly — we're still working on offering lawn mowing consistently. We do light yard work for sure (raking, cleaning up the yard, etc.). For mowing specifically, just text us and ask. We'll let you know if it's something we can do for your situation.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+How do you get to jobs?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">We use bikes and pull our equipment on a wagon. It works great for most jobs in and around Wisconsin Rapids. That's also why travel distance is a factor in our pricing — longer trips take more time and effort on our end. We're always upfront about that when we give you a quote.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+What if I'm not happy with the job?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">We don't offer refunds — but we always try to make things right. If something wasn't done to your satisfaction, let us know right away and we'll do our best to address it. We're not trying to rip anyone off. We want you to be genuinely happy with the work we did.</div>
+</div>
+<div class="faq-item">
+<div class="faq-q" onclick="toggleFaq(this)">
+Are you insured or licensed?
+<span class="faq-arrow"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 2v6M2 2l3 3-3 3"/></svg></span>
+</div>
+<div class="faq-a">We're a young startup cleaning business. We're not currently licensed or insured in a formal business sense — we're upfront about that. We take care working in your space and will always treat your property with respect. If that's a concern for you, we totally understand and respect your decision.</div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<div class="section-label">Contact</div>
+<h2 class="section-title">Let's talk.</h2>
+<div class="contact-grid">
+<div class="contact-info">
+<h3>Reach out anytime.</h3>
+<p>The easiest way to get in touch is to text us. We usually respond pretty fast. You can also call, or fill out the form and we'll get back to you soon.</p>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</div>
+<div class="contact-detail-text">
+<small>Phone / Text</small>
+<p><a href="tel:7154986796">(715) 498-6796</a> — text preferred</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+</div>
+<div class="contact-detail-text">
+<small>Location</small>
+<p>Wisconsin Rapids, Wisconsin</p>
+</div>
+</div>
+<div class="contact-detail">
+<div class="contact-detail-icon">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+</div>
+<div class="contact-detail-text">
+<small>Response Time</small>
+<p>Usually same day, often within the hour</p>
+</div>
+</div>
+<div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--white);border:var(--border);border-radius:var(--radius);font-size:.8rem;color:var(--gray-700);line-height:1.6">
+<strong style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.4rem">We serve</strong>
+Wisconsin Rapids and surrounding areas. Travel distance may affect pricing for locations further out.
+</div>
+</div>
+<div class="contact-form">
+<div class="form-row">
+<div class="form-group">
+<label>First Name</label>
+<input type="text" placeholder="Jane" id="fname">
+</div>
+<div class="form-group">
+<label>Last Name</label>
+<input type="text" placeholder="Smith" id="lname">
+</div>
+</div>
+<div class="form-group">
+<label>Phone Number</label>
+<input type="tel" placeholder="(715) 000-0000" id="fphone">
+</div>
+<div class="form-group">
+<label>Service Needed</label>
+<select id="fservice">
+<option value="">Select a service...</option>
+<option>Car Interior Clean</option>
+<option>Single Room</option>
+<option>Garage Clean</option>
+<option>Shed Clean</option>
+<option>Basement Clean</option>
+<option>Attic Clean</option>
+<option>Whole House Clean</option>
+<option>Sweeping / Mopping</option>
+<option>Vacuuming</option>
+<option>Light Yard Work</option>
+<option>Lawn Mowing (ask)</option>
+<option>Something else</option>
+</select>
+</div>
+<div class="form-group">
+<label>Message / Details</label>
+<textarea placeholder="Tell us a bit about the job — size of space, what needs done, your general area in Wisconsin Rapids..." id="fmessage"></textarea>
+</div>
+<button class="form-submit" onclick="handleSubmit()">Send Message</button>
+<p class="form-note">Or just text us directly at (715) 498-6796 — it's faster.</p>
+</div>
+</div>
+</section>
+
+<div class="disclaimer" id="disclaimer">
+<div class="disclaimer-inner">
+<div class="disclaimer-title">A few things to know</div>
+<p>We do not offer refunds once a job is completed. If there's an issue with our work, please let us know right away — we'll always try our best to make it right.</p>
+<p>We're a young business that's still learning. We take every job seriously and work hard, but we're not a professional cleaning franchise. Prices shown are starting estimates and may vary based on travel distance, job difficulty, and the condition of the space.</p>
+<p>We're honest about what we can and can't do. If a job is outside what we're able to handle, we'll tell you before we start. We appreciate your understanding and support as we grow.</p>
+</div>
+</div>
+
+<footer>
+<div class="footer-brand">River City Cleaners <span>— Wisconsin Rapids, WI</span></div>
+<div class="footer-links">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#contact">Contact</a>
+<a href="tel:7154986796">(715) 498-6796</a>
+</div>
+<div class="footer-copy">© 2024 River City Cleaners</div>
+</footer>
+
+<div class="toast" id="toast">Message sent! We'll text you back soon.</div>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30);
+});
+
+var hamburgerBtn=document.getElementById('hamburgerBtn');
+var mobileMenu=document.getElementById('mobileMenu');
+hamburgerBtn.addEventListener('click',function(){
+  mobileMenu.classList.toggle('open');
+});
+function closeMobile(){mobileMenu.classList.remove('open')}
+
+function toggleFaq(el){
+  var item=el.parentElement;
+  var all=document.querySelectorAll('.faq-item');
+  all.forEach(function(i){if(i!==item)i.classList.remove('open')});
+  item.classList.toggle('open');
+}
+
+var WEBHOOK='https://discord.com/api/webhooks/1502865659091091507/YOBm3XReYCAN73z1c7v2TpOm_gyPHWHQrR3SGt1UEyAPg6AjhSDd8VPA4_ZaDnentqcF';
+var COOLDOWN_MS=60000;
+var submitting=false;
+
+function getLastSubmit(){
+  try{return parseInt(localStorage.getItem('rcc_last_submit')||'0');}catch(e){return 0;}
+}
+function setLastSubmit(){
+  try{localStorage.setItem('rcc_last_submit',Date.now().toString());}catch(e){}
+}
+
+function handleSubmit(){
+  if(submitting)return;
+  var fname=document.getElementById('fname').value.trim();
+  var lname=document.getElementById('lname').value.trim();
+  var fphone=document.getElementById('fphone').value.trim();
+  var fservice=document.getElementById('fservice').value;
+  var fmessage=document.getElementById('fmessage').value.trim();
+
+  if(!fname||!fphone){
+    showToast('Please enter your name and phone number.');
+    return;
+  }
+
+  var now=Date.now();
+  var last=getLastSubmit();
+  var remaining=Math.ceil((COOLDOWN_MS-(now-last))/1000);
+  if(last&&(now-last)<COOLDOWN_MS){
+    showToast('Please wait '+remaining+'s before sending another message.');
+    return;
+  }
+
+  var btn=document.querySelector('.form-submit');
+  btn.textContent='Sending...';
+  btn.disabled=true;
+  submitting=true;
+
+  var fields=[];
+  fields.push({name:'📞 Phone',value:fphone,inline:true});
+  if(lname)fields.push({name:'Last Name',value:lname,inline:true});
+  if(fservice)fields.push({name:'🧹 Service',value:fservice,inline:false});
+  if(fmessage)fields.push({name:'💬 Message',value:fmessage,inline:false});
+
+  var payload={
+    username:'River City Cleaners',
+    embeds:[{
+      title:'New Contact Form Submission',
+      color:0x0d0d0d,
+      fields:[{name:'👤 Name',value:fname+(lname?' '+lname:''),inline:true}].concat(fields),
+      footer:{text:'rivercitycleaners.com • Wisconsin Rapids, WI'},
+      timestamp:new Date().toISOString()
+    }]
+  };
+
+  fetch(WEBHOOK,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(payload)
+  })
+  .then(function(res){
+    if(res.ok||res.status===204){
+      setLastSubmit();
+      showToast("Message sent! We'll text you back soon.");
+      document.getElementById('fname').value='';
+      document.getElementById('lname').value='';
+      document.getElementById('fphone').value='';
+      document.getElementById('fservice').value='';
+      document.getElementById('fmessage').value='';
+    } else {
+      showToast('Something went wrong. Please text us directly at (715) 498-6796.');
+    }
+  })
+  .catch(function(){
+    showToast('Could not send. Please text us at (715) 498-6796.');
+  })
+  .finally(function(){
+    btn.textContent='Send Message';
+    btn.disabled=false;
+    submitting=false;
+  });
+}
+
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},3500);
+}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.style.opacity='1';
+      e.target.style.transform='translateY(0)';
+    }
+  });
+},{threshold:0.1});
+
+document.querySelectorAll('.service-card,.price-card,.hiw-step,.why-item,.owner-card').forEach(function(el){
+  el.style.opacity='0';
+  el.style.transform='translateY(16px)';
+  el.style.transition='opacity .4s ease, transform .4s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
